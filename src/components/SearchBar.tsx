@@ -54,9 +54,6 @@ const SearchBar: FC = () => {
           <CategoryTabs active={activeCategory} onChange={setActiveCategory} />
         </div>
         <MoviesCard movies={data} loading={loading} />
-        <div>
-          <TredningSections />
-        </div>
       </div>
     </div>
   );
