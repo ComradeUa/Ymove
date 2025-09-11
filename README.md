@@ -1,4 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# YMovies
+
+YMovies is an application for searching and viewing information about popular movies, built with Next.js and TypeScript.
+
+## Features
+- View popular movies from TMDB
+- Search movies by title
+- Movie detail page
+- Modern UI (shadcn/ui, Tailwind CSS)
+- Loading and skeleton screens
+
+## Technologies
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- TMDB API
+
+## Quick Start
+
+1. Clone the repository:
+	```bash
+	git clone https://github.com/ComradeUa/Ymove.git
+	cd Ymove
+	```
+2. Install dependencies:
+	```bash
+	npm install
+	```
+3. Create a `.env.local` file and add your TMDB API key:
+	```env
+	MOVIES_API_KEY=your_key
+	```
+4. Start the project:
+	```bash
+	npm run dev
+	```
+5. Open [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
+- `src/app` — application pages
+- `src/components` — UI components
+- `src/hooks` — custom hooks
+- `src/services/api` — API logic
+- `src/types` — TypeScript types
+
+## License
+MIT
 
 ## Getting Started
 
