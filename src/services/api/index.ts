@@ -1,4 +1,5 @@
 import { MediaItem } from "@/types/mediaItems";
+import { MovieDetails } from "@/types/movieDetails";
 export const fetchData = async(): Promise<MediaItem[]> => {
     try{
         const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=137772c7c1451abb30832465cd2bca39`,{
@@ -55,3 +56,12 @@ export const fetchSearch = async (search_term: string): Promise<MediaItem[]> => 
     }
 
 }
+export const getMovieById = async (id:number):Promise<MovieDetails> =>{
+    try{
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=137772c7c1451abb30832465cd2bca39&language=en-US`)
+        const data = await res.json();
+        return data;
+    }catch(e){
+        throw e;
+    }
+} 
