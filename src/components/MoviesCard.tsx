@@ -20,26 +20,6 @@ const MoviesCard: FC<MovieProps> = ({ movies, loading }) => {
   }
 
   return (
-    /*<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-5 px-7">
-      {movies.map((movie) => (
-        <Card key={movie.id} className="rounded-xl shadow-sd overflow-hidden bg-white">
-          <div className="relative w-full aspect-[2/3]">
-            <Link href={`/movie/${movie.id}`}>
-              <Image
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 150px"
-              />
-            </Link>
-          </div>
-          <CardContent className="p-2">
-            <h2 className="text-sm text-center font-semibold truncate">{movie.title}</h2>
-          </CardContent>
-        </Card>
-      ))}
-   </div>*/
     <Swiper
       modules={[Navigation]}
       spaceBetween={10}
@@ -62,7 +42,9 @@ const MoviesCard: FC<MovieProps> = ({ movies, loading }) => {
                 className="rounded-xl"
               />
             </Link>
-            <h2 className="text-sm text-center font-semibold truncate mt-2 w-40">{movie.title}</h2>
+            <h2 className="text-sm text-center font-semibold truncate mt-2 w-40">
+              {movie.name || movie.title}
+            </h2>
           </div>
         </SwiperSlide>
       ))}
