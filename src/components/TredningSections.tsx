@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useState } from 'react';
 import MoviesCard from './MoviesCard';
 import { useTrending } from '@/hooks/useTrending';
@@ -14,8 +15,8 @@ const TrendingSection: FC = () => {
   const { data, loading, error } = useTrending(timeWindow);
 
   return (
-    <div className="mt-10 ml-10">
-      <div className="flex items-center gap-6 mb-4">
+    <div className="mt-10">
+      <div className="flex items-center gap-6 mb-4 ml-10">
         <h1 className={`${poppins.className} text-2xl`}>Trending Movies</h1>
         <div className="flex rounded-full border border-slate-800 overflow-hidden">
           <button

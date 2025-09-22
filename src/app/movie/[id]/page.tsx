@@ -1,7 +1,13 @@
-export default function MoviePage(){
-    return(
-        <div>
-            <h1>Hello world</h1>
-        </div>
-    )
+'use client';
+import MovieDetailsCard from '@/components/MovieDetailsCard';
+import MovieTrailer from '@/components/MovieTrailer';
+import TopBilledCast from '@/components/TopBilledCast';
+export default function MoviePage() {
+  return (
+    <div>
+      <MovieDetailsCard />
+      <TopBilledCast />
+      <MovieTrailer />
+    </div>
+  );
 }

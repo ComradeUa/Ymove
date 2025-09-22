@@ -7,7 +7,6 @@ import { Poppins } from 'next/font/google';
 import SearchButton from './SearchButton';
 import CategoryTabs from './CategoryTabs';
 import { useTrendingByCategory } from '@/hooks/useTrendingByCategory';
-import TredningSections from './TredningSections';
 import { useRouter } from 'next/navigation';
 const poppins = Poppins({
   weight: ['400', '700'],
@@ -15,7 +14,7 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-const SearchBar: FC = () => {
+const DiscoverMovies: FC = () => {
   const [text, setText] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState<string>('Streaming');
   const router = useRouter();
@@ -54,12 +53,9 @@ const SearchBar: FC = () => {
           <CategoryTabs active={activeCategory} onChange={setActiveCategory} />
         </div>
         <MoviesCard movies={data} loading={loading} />
-        <div>
-          <TredningSections />
-        </div>
       </div>
     </div>
   );
 };
 
-export default SearchBar;
+export default DiscoverMovies;
