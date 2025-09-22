@@ -1,12 +1,12 @@
 export type MediaItem = {
   id: number;
-  title: string;         // для фильмов
-  name: string;          // для сериалов
+  title: string;       
+  name: string;          
   overview: string;
   poster_path: string;
   backdrop_path: string
-  release_date: string;   // для фильмов
-  first_air_date: string; // для сериалов
+  release_date: string;   
+  first_air_date: string; 
   vote_average: number;
   vote_count: number;
 }
