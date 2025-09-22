@@ -24,8 +24,7 @@ It uses **Next.js**, **Prisma**, **Redux Toolkit**, and **TMDB API** to fetch mo
 - **Prisma ORM** with PostgreSQL  
 - **Redux Toolkit** for state management  
 - **TMDB API** for movie data  
-- **Tailwind CSS** for styling  
-- **Next/Image** for optimized images  
+- **Tailwind CSS** for styling   
 
 ---
 
@@ -36,3 +35,5 @@ It uses **Next.js**, **Prisma**, **Redux Toolkit**, and **TMDB API** to fetch mo
 ```bash
 git clone https://github.com/your-username/ymove.git
 cd ymove
+npm i
+npm run dev
