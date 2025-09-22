@@ -1,5 +1,9 @@
+import { Casts } from "@/types/casts";
 import { MediaItem } from "@/types/mediaItems";
 import { MovieDetails } from "@/types/movieDetails";
+import { Video } from "@/types/video";
+import { cache } from "react";
+
 export const fetchData = async(): Promise<MediaItem[]> => {
     try{
         const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=137772c7c1451abb30832465cd2bca39`,{
@@ -58,10 +62,35 @@ export const fetchSearch = async (search_term: string): Promise<MediaItem[]> => 
 }
 export const getMovieById = async (id:number):Promise<MovieDetails> =>{
     try{
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=137772c7c1451abb30832465cd2bca39&language=en-US`)
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=137772c7c1451abb30832465cd2bca39&language=en-US`, {
+            cache: "no-store"
+        })
         const data = await res.json();
         return data;
     }catch(e){
         throw e;
     }
 } 
+export const getCostsById = async (move_id:number): Promise<Casts[]> => {
+    try{
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${move_id}/credits?api_key=137772c7c1451abb30832465cd2bca39&language=en-US`);
+        const data = await res.json();
+        return data.cast;
+    }catch(e){
+        throw e;
+    }
+}
+export const getVideoById = async (movie_id:number): Promise<Video[]> => {
+    try{
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=137772c7c1451abb30832465cd2bca39&language=en-US`, {
+            next: {
+                revalidate: 3600
+            }
+        })
+        const data = await res.json();
+        console.log(data.results);
+        return data.results;
+    }catch(e){
+        throw e;
+    }
+}
