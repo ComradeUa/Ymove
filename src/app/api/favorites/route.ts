@@ -1,0 +1,51 @@
+import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
+export async function POST(req:Request){
+    const {id, movie_id} = await req.json();
+    try{
+        await prisma.favorite.create({
+            data:{id, movie_id},
+        })
+        return NextResponse.json({ success: true }, { status: 200 });
+    }catch(err){
+        return NextResponse.json({error: "Cannot create favorite"}), {status: 500};
+    }
+}
+export async function GET(req:Request){
+    const favorites = await prisma.favorite.findMany({
+        select: {
+            id: true,
+            movie_id: true
+        }
+    })
+    const moviesData = await Promise.all(
+        favorites.map(async (f) => {
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${f.movie_id}?api_key=137772c7c1451abb30832465cd2bca39`);
+            return res.json();
+        })
+    )
+    return NextResponse.json(moviesData);
+}
+export async function DELETE(req:Request){
+    const {searchParams} = new URL(req.url);
+    const {id} = await req.json();
+    if(!id){
+        return NextResponse.json({
+           error: "id or movie_id required"
+        },
+    {status: 400})
+    }
+
+  try {
+    let deletedFavorite;
+    if (id) {
+      deletedFavorite = await prisma.favorite.delete({
+        where: { id },
+      });
+    }
+
+    return NextResponse.json({ success: true, deletedFavorite });
+  } catch (err) {
+    return NextResponse.json({ error: "Cannot delete favorite" }, { status: 500 });
+  }
+}
