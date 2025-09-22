@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import UserScore from './UserScore';
 type MovieInfoProps = {
+  id: number;
   title: string;
   releaseDate: string;
   genres: { name: string }[];
@@ -10,6 +11,7 @@ type MovieInfoProps = {
 };
 
 const MovieInfo: FC<MovieInfoProps> = ({
+  id,
   title,
   releaseDate,
   genres,
@@ -28,7 +30,7 @@ const MovieInfo: FC<MovieInfoProps> = ({
           {Math.floor(runtime / 60)} h {runtime % 60} min
         </p>
       </div>
-      <UserScore score={voteAverage} />
+      <UserScore score={voteAverage} id={id} />
       <p className="text-lg opacity-90 mt-4">{overview}</p>
     </div>
   );

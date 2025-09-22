@@ -2,16 +2,19 @@ import React, { type FC } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
 import { Heart } from 'lucide-react';
+import FavoritesButton from './FavoritesButton';
 type UserScoreProps = {
+  id: number;
   score: number;
 };
 
-const UserScore: FC<UserScoreProps> = ({ score }) => {
+const UserScore: FC<UserScoreProps> = ({ id, score }) => {
   const radius = 24;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference * (1 - score / 10);
   let strokeColor: string = 'green';
   if (score * 10 < 50) strokeColor = 'red';
+
   return (
     <div className="flex items-center gap-4 mt-4">
       <div className="relative w-16 h-16">
@@ -34,9 +37,7 @@ const UserScore: FC<UserScoreProps> = ({ score }) => {
       <span className="text-white text-lg opacity-80">User Score</span>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button className="w-12 h-12 rounded-full">
-            <Heart />
-          </Button>
+          <FavoritesButton movie_id={id}></FavoritesButton>
         </TooltipTrigger>
         <TooltipContent>
           <p>Mark as favorite</p>

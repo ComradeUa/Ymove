@@ -37,6 +37,7 @@ const MovieDetailsCard: FC = () => {
 
           {/* Текст */}
           <MovieInfo
+            id={movie.id}
             title={movie.title}
             releaseDate={movie.release_date}
             genres={movie.genres}
