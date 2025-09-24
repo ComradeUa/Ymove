@@ -9,7 +9,7 @@ datasource db {
 
 model Favorite {
   id       String @id @default(cuid())
-  movie_id String
+  movie_id Int
 
   @@unique([id])
 }
