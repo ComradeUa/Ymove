@@ -19,7 +19,6 @@ export default function FavoritesPage() {
       {favorites?.map((f) => (
         <div key={f.id}>
           <h1>{f.title}</h1>
-          <Image src={``}
         </div>
       ))}
     </>
