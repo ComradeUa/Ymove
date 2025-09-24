@@ -1,14 +1,21 @@
-import React, { type FC } from 'react';
+import React, { useState, useEffect, type FC } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
 import { Heart } from 'lucide-react';
-import FavoritesButton from './FavoritesButton';
+import {
+  useAddFavoriteMutation,
+  useDeleteFavoriteMutation,
+  useGetFavoritesQuery,
+} from '@/store/api/favorite';
+import { useToggleFavorite } from '@/hooks/useToggleFavorite';
 type UserScoreProps = {
-  id: number;
   score: number;
+  movie_id: number;
 };
 
-const UserScore: FC<UserScoreProps> = ({ id, score }) => {
+const UserScore: FC<UserScoreProps> = ({ score, movie_id }) => {
+  const { isFavorite, toggleFavoriteClick } = useToggleFavorite(movie_id);
+
   const radius = 24;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference * (1 - score / 10);
@@ -37,7 +44,9 @@ const UserScore: FC<UserScoreProps> = ({ id, score }) => {
       <span className="text-white text-lg opacity-80">User Score</span>
       <Tooltip>
         <TooltipTrigger asChild>
-          <FavoritesButton movie_id={id}></FavoritesButton>
+          <Button onClick={toggleFavoriteClick}>
+            {isFavorite ? <Heart color="#ff0e00" /> : <Heart />}
+          </Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>Mark as favorite</p>
