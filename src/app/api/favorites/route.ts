@@ -1,16 +1,19 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
-export async function POST(req:Request){
-    const {id, movie_id} = await req.json();
-    try{
-        await prisma.favorite.create({
-            data:{id, movie_id},
-        })
-        return NextResponse.json({ success: true }, { status: 200 });
-    }catch(err){
-        return NextResponse.json({error: "Cannot create favorite"}), {status: 500};
-    }
+export async function POST(req: Request) {
+  const { movie_id } = await req.json();
+  try {
+    const favorite = await prisma.favorite.create({
+      data: { movie_id: movie_id },
+    });
+    return NextResponse.json(favorite, { status: 200 });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Cannot create favorite" }, { status: 500 });
+  }
 }
+
+
 export async function GET(req:Request){
     const favorites = await prisma.favorite.findMany({
         select: {
@@ -26,26 +29,31 @@ export async function GET(req:Request){
     )
     return NextResponse.json(moviesData);
 }
-export async function DELETE(req:Request){
-    const {searchParams} = new URL(req.url);
-    const {id} = await req.json();
-    if(!id){
-        return NextResponse.json({
-           error: "id or movie_id required"
-        },
-    {status: 400})
-    }
 
+
+
+
+export async function DELETE(req: Request) {
   try {
-    let deletedFavorite;
-    if (id) {
-      deletedFavorite = await prisma.favorite.delete({
-        where: { id },
-      });
+    const url = new URL(req.url)
+    const movieIdParam = url.searchParams.get("id")
+
+    if (!movieIdParam) {
+      return NextResponse.json({ error: "movie_id required" }, { status: 400 })
     }
 
-    return NextResponse.json({ success: true, deletedFavorite });
+    const movie_id = Number(movieIdParam)
+    if (isNaN(movie_id)) {
+      return NextResponse.json({ error: "movie_id must be a number" }, { status: 400 })
+    }
+
+    const deletedFavorite = await prisma.favorite.deleteMany({
+      where: { movie_id },
+    })
+
+    return NextResponse.json({ success: true, deletedFavorite })
   } catch (err) {
-    return NextResponse.json({ error: "Cannot delete favorite" }, { status: 500 });
+    console.error("Ошибка при удалении favorite:", err)
+    return NextResponse.json({ error: "Cannot delete favorite" }, { status: 500 })
   }
 }
