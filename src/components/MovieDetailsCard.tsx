@@ -5,7 +5,6 @@ import { useMovieById } from '@/hooks/useMovieById';
 import Image from 'next/image';
 import MoviePoster from './MoviePoster';
 import MovieInfo from './MovieInfo';
-import TopBilledCast from './TopBilledCast';
 const MovieDetailsCard: FC = () => {
   const params = useParams();
   const { id } = params;
