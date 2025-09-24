@@ -30,7 +30,7 @@ const MovieInfo: FC<MovieInfoProps> = ({
           {Math.floor(runtime / 60)} h {runtime % 60} min
         </p>
       </div>
-      <UserScore score={voteAverage} id={id} />
+      <UserScore score={voteAverage} movie_id={id} />
       <p className="text-lg opacity-90 mt-4">{overview}</p>
     </div>
   );
