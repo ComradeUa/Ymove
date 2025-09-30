@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { useParams } from 'next/navigation';
 import { useVideo } from '@/hooks/useVideo';
-import ReactPlayer from 'react-player';
 const MovieTrailer: FC = () => {
   const params = useParams();
   const { id } = params;
 
   const { trailer, loading, error } = useVideo(Number(id));
 
-  if (loading) return <div>Загрузка трейлера...</div>;
-  if (error) return <div>Ошибка: {error}</div>;
+  if (loading) return <div>Loading trailer...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <div className="flex flex-col items-center w-full h-[50rem]">
       <h1 className="text-center text-3xl font-bold mb-4">Trailer</h1>

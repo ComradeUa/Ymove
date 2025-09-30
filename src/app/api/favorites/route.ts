@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+
 export async function POST(req: Request) {
   const { movie_id } = await req.json();
   try {
@@ -29,10 +30,6 @@ export async function GET(req:Request){
     )
     return NextResponse.json(moviesData);
 }
-
-
-
-
 export async function DELETE(req: Request) {
   try {
     const url = new URL(req.url)

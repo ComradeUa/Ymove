@@ -1,4 +1,4 @@
-import { MediaItem } from '@/types/mediaItems';
+import { type MediaItem } from '@/types/mediaItems';
 import React, { type FC } from 'react';
 import MovieSearchCard from './MoviesSearchCard';
 type MoviesListResultProps = {

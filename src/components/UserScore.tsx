@@ -1,12 +1,7 @@
-import React, { useState, useEffect, type FC } from 'react';
+import React, { type FC } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
 import { Heart } from 'lucide-react';
-import {
-  useAddFavoriteMutation,
-  useDeleteFavoriteMutation,
-  useGetFavoritesQuery,
-} from '@/store/api/favorite';
 import { useToggleFavorite } from '@/hooks/useToggleFavorite';
 type UserScoreProps = {
   score: number;
@@ -44,7 +39,7 @@ const UserScore: FC<UserScoreProps> = ({ score, movie_id }) => {
       <span className="text-white text-lg opacity-80">User Score</span>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={toggleFavoriteClick}>
+          <Button variant="ghost" onClick={toggleFavoriteClick}>
             {isFavorite ? <Heart color="#ff0e00" /> : <Heart />}
           </Button>
         </TooltipTrigger>

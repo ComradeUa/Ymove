@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { useCasts } from '@/hooks/useCasts';
-import { Card, CardFooter, CardTitle } from './ui/card';
+import { Card, CardTitle } from './ui/card';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';

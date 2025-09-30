@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import { Skeleton } from './ui/skeleton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';

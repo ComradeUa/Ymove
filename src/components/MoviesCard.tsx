@@ -1,6 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import Image from 'next/image';
 import { type MediaItem } from '@/types/mediaItems';
 import Link from 'next/link';

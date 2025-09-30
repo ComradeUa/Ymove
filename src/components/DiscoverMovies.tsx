@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { type FC, useState } from 'react';
 import { Input } from './ui/input';
 import MoviesCard from './MoviesCard';
 import { Poppins } from 'next/font/google';
