@@ -1,8 +1,7 @@
-import { Casts } from "@/types/casts";
-import { MediaItem } from "@/types/mediaItems";
-import { MovieDetails } from "@/types/movieDetails";
-import { Video } from "@/types/video";
-import { cache } from "react";
+import { type Casts } from "@/types/casts";
+import { type MediaItem } from "@/types/mediaItems";
+import { type MovieDetails } from "@/types/movieDetails";
+import { type Video } from "@/types/video";
 
 export const fetchData = async(): Promise<MediaItem[]> => {
     try{

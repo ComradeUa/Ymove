@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 import { fetchData, fetchTv } from "@/services/api";
-import { MediaItem } from "@/types/mediaItems";
+import { type MediaItem } from "@/types/mediaItems";
 
 export const useMediaFetch = () => {
   const [movies, setMovies] = useState<MediaItem[]>([]);
