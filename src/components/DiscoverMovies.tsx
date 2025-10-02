@@ -1,5 +1,4 @@
 'use client';
-
 import React, { type FC, useState } from 'react';
 import { Input } from './ui/input';
 import MoviesCard from './MoviesCard';
@@ -18,7 +17,7 @@ const DiscoverMovies: FC = () => {
   const [text, setText] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState<string>('Streaming');
   const router = useRouter();
-  const { data, loading, error } = useTrendingByCategory(activeCategory);
+  const { data, loading } = useTrendingByCategory(activeCategory);
 
   const handleSearch = (): void => {
     if (text.trim() !== '') {
