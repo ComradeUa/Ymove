@@ -40,19 +40,21 @@ export const useAuth = (mode: AuthMode) => {
         } else {
           toast.success('User created');
           router.push('/'); 
+          router.refresh()
         }
       } else {
         const { error } = await authClient.signIn.email({
           email,
           password,
         });
-
+        console.log(error)
         if (error) {
            setError(error.message || 'Failed to sign in');
           toast.error("Incorrect email or password");
         } else {
           toast.success('Signed in successfully');
-          router.push('/'); 
+          router.push('/');
+          router.refresh() 
         }
       }
     } catch (err) {

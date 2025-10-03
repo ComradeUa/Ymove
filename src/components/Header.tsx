@@ -3,7 +3,6 @@ import { useSession, authClient } from '@/lib/auth-client';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
 import React, { type FC, useState } from 'react';
-import { redirect } from 'next/navigation';
 
 const poppins = Poppins({
   weight: ['400', '700'],
@@ -23,16 +22,13 @@ const Header: FC = () => {
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
     await authClient.signOut();
-    redirect('/');
+    window.location.reload();
   };
 
   return (
     <header className="bg-gray-900 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Логотип */}
         <div className={`${poppins.className} text-2xl font-bold leading-none`}>YMovies</div>
-
-        {/* Кнопка меню для мобильных */}
         <button
           className="sm:hidden flex flex-col justify-between w-6 h-6 focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}>
@@ -52,8 +48,6 @@ const Header: FC = () => {
             }`}
           />
         </button>
-
-        {/* Навигация */}
         <nav
           className={`${inter.className} 
             ${menuOpen ? 'block' : 'hidden'} 
