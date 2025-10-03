@@ -2,8 +2,8 @@
 import { useSession, authClient } from '@/lib/auth-client';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import React, { type FC } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState, type FC } from 'react';
 
 const poppins = Poppins({
   weight: ['400', '700'],
@@ -18,11 +18,12 @@ const inter = Inter({
 });
 
 const Header: FC = () => {
+  const router = useRouter();
   const { data: session, isPending, error } = useSession();
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
     await authClient.signOut();
-    redirect('/');
+    window.location.reload();
   };
   return (
     <header className="bg-gray-900 text-white">

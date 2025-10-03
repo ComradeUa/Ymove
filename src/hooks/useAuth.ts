@@ -39,7 +39,7 @@ export const useAuth = (mode: AuthMode) => {
           toast.error(error.message || 'Failed to sign up');
         } else {
           toast.success('User created');
-          router.push('/'); 
+          window.location.href = '/'
         }
       } else {
         const { error } = await authClient.signIn.email({
@@ -52,7 +52,7 @@ export const useAuth = (mode: AuthMode) => {
           toast.error("Incorrect email or password");
         } else {
           toast.success('Signed in successfully');
-          router.push('/'); 
+           window.location.href = '/'
         }
       }
     } catch (err) {
