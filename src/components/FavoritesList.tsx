@@ -4,8 +4,9 @@ import React, { type FC } from 'react';
 import FavoriteItem from './FavoriteItem';
 import { useSession } from '@/lib/auth-client';
 import { skipToken } from '@reduxjs/toolkit/query';
+
 const FavoritesList: FC = () => {
-  const { data: session, isPending, error } = useSession();
+  const { data: session } = useSession();
   const user_id = session?.user?.id;
 
   const {
@@ -13,17 +14,18 @@ const FavoritesList: FC = () => {
     isLoading,
     isError,
   } = useGetFavoritesQuery(user_id ? { user_id } : skipToken);
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading favorites </p>;
-  if (!session) return <p>if you want to use the function then you have to sign in!</p>;
-  if (!favorites || favorites.length === 0) {
-    // eslint-disable-next-line react/no-unescaped-entities
-    return <p>You don't have any favorites</p>;
-  }
+
+  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
+  if (isError) return <p className="text-center mt-10 text-red-500">Error loading favorites</p>;
+  if (!session) return <p className="text-center mt-10">You need to sign in to see favorites!</p>;
+  if (!favorites || favorites.length === 0)
+    return <p className="text-center mt-10">You don't have any favorites</p>;
+
   return (
-    <div className="flex flex-col items-center mt-10">
-      <h1 className="text-3xl font-bold">My favorites:</h1>
-      <div className="mt-5">
+    <div className="mt-10 px-4">
+      <h1 className="text-3xl font-bold text-center">My Favorites</h1>
+
+      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {favorites.map((f) => (
           <FavoriteItem key={f.id} movie={f} />
         ))}

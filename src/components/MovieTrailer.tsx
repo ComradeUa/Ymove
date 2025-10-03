@@ -10,9 +10,9 @@ const MovieTrailer: FC = () => {
   if (loading) return <div>Loading trailer...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
-    <div className="flex flex-col items-center w-full h-[50rem]">
+    <div className="flex flex-col items-center w-full px-4 mt-10">
       <h1 className="text-center text-3xl font-bold mb-4">Trailer</h1>
-      <div className="w-full max-w-[50%] aspect-video">
+      <div className="w-full sm:max-w-3xl lg:max-w-4xl aspect-video">
         <iframe
           width="100%"
           height="100%"
@@ -20,6 +20,7 @@ const MovieTrailer: FC = () => {
           title={trailer?.name}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          className="rounded-lg shadow-lg"
         />
       </div>
     </div>
