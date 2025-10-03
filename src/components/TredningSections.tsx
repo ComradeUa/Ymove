@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useState } from 'react';
+import React, { type FC, useState } from 'react';
 import MoviesCard from './MoviesCard';
 import { useTrending } from '@/hooks/useTrending';
 import { Poppins } from 'next/font/google';

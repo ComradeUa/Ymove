@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { Card } from './ui/card';
 import { Skeleton } from './ui/skeleton';
 const MovieListSkeleton: FC = () => {
