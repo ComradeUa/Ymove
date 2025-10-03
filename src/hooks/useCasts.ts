@@ -1,5 +1,5 @@
 import { getCostsById } from "@/services/api";
-import { Casts } from "@/types/casts";
+import { type Casts } from "@/types/casts";
 import { useEffect, useState } from "react";
 
 const cache: Record<number, Casts[]> = {};
