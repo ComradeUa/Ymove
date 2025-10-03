@@ -6,16 +6,17 @@ type SearchInputProps = {
   onChangeQuery: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onHandleSearch: () => void;
 };
+
 const SearchInput: FC<SearchInputProps> = ({ value, onChangeQuery, onHandleSearch }) => {
   return (
-    <div className="flex justify-center gap-4 mb-5">
+    <div className="flex justify-center mb-5 px-4">
       <Input
         type="text"
         value={value}
-        placeholder={value}
+        placeholder="Search movies..."
         onChange={onChangeQuery}
-        className="w-[50%]"
-        onKeyDown={(e) => e.key == 'Enter' && onHandleSearch()}
+        onKeyDown={(e) => e.key === 'Enter' && onHandleSearch()}
+        className="w-full max-w-md sm:max-w-lg md:max-w-xl"
       />
     </div>
   );

@@ -5,6 +5,7 @@ import { useMovieById } from '@/hooks/useMovieById';
 import Image from 'next/image';
 import MoviePoster from './MoviePoster';
 import MovieInfo from './MovieInfo';
+
 const MovieDetailsCard: FC = () => {
   const params = useParams();
   const { id } = params;
@@ -15,36 +16,39 @@ const MovieDetailsCard: FC = () => {
     return <p className="text-red-500 text-center mt-10">{error ?? 'Movie not found'}</p>;
 
   return (
-    <div>
-      <div className="relative w-full">
-        {/* Фон */}
-        {movie.backdrop_path && (
-          <Image
-            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-            alt={movie.title || 'Background'}
-            fill
-            className="object-cover"
-            priority
-          />
-        )}
-        <div className="absolute inset-0 bg-black/80" />
+    <div className="relative w-full">
+      {/* Фон */}
+      {movie.backdrop_path && (
+        <Image
+          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          alt={movie.title || 'Background'}
+          fill
+          className="object-cover"
+          priority
+        />
+      )}
+      <div className="absolute inset-0 bg-black/80" />
 
-        {/* Контент */}
-        <div className="relative z-10 flex items-center gap-9 p-10  justify-center">
-          {/* Постер */}
-          <MoviePoster posterPath={movie.poster_path} title={movie.title} />
+      {/* Контент */}
+      <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10 p-5 sm:p-10 justify-center">
+        {/* Постер */}
+        <MoviePoster
+          posterPath={movie.poster_path}
+          title={movie.title}
+          className="w-52 sm:w-64 flex-shrink-0"
+        />
 
-          {/* Текст */}
-          <MovieInfo
-            id={movie.id}
-            title={movie.title}
-            releaseDate={movie.release_date}
-            genres={movie.genres}
-            runtime={movie.runtime}
-            overview={movie.overview}
-            voteAverage={movie.vote_average}
-          />
-        </div>
+        {/* Текст */}
+        <MovieInfo
+          id={movie.id}
+          title={movie.title}
+          releaseDate={movie.release_date}
+          genres={movie.genres}
+          runtime={movie.runtime}
+          overview={movie.overview}
+          voteAverage={movie.vote_average}
+          className="w-full sm:w-[60%]"
+        />
       </div>
     </div>
   );

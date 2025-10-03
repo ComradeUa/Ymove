@@ -9,12 +9,12 @@ export const useTrendingByCategory = (category: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-      setError(null);
+       setLoading(true);
+       setError(null);
 
       const url = getUrlByCategory(category);
       if (!url) {
-        setData([]);
+         setData([]);
         setLoading(false);
         return;
       }
