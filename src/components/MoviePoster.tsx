@@ -4,6 +4,7 @@ import Image from 'next/image';
 type MoviePosterProps = {
   posterPath?: string;
   title?: string;
+  className?: string;
 };
 
 const MoviePoster: FC<MoviePosterProps> = ({ posterPath, title }) => {
