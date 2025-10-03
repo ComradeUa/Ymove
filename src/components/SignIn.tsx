@@ -22,7 +22,7 @@ const SignIn: FC = () => {
   const { setEmail, setPassword, handleSubmit, error } = useAuth('signIn');
   return (
     <div className="flex justify-center items-center min-h-screen w-full">
-      <Card className="w-full max-w-md p-6 flex flex-col justify-center h-[500px]">
+      <Card className="w-full max-w-md p-6 flex flex-col justify-center h-[32rem]">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
           <CardDescription>Enter your email below to login to your account</CardDescription>

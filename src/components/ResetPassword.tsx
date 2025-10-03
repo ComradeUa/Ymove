@@ -48,7 +48,7 @@ const ResetPassword: FC = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen w-full">
-      <Card className="w-full max-w-md p-6 flex flex-col justify-center h-[500px]">
+      <Card className="w-full max-w-md p-6 flex flex-col justify-center h-[32rem]">
         <CardHeader>
           <CardTitle>Reset Password</CardTitle>
           <CardDescription>
