@@ -6,7 +6,7 @@ import { useSession } from '@/lib/auth-client';
 import { skipToken } from '@reduxjs/toolkit/query';
 const FavoritesList: FC = () => {
   const { data: session, isPending, error } = useSession();
-  const user_id = session?.user?.id; // строка или undefined
+  const user_id = session?.user?.id;
 
   const {
     data: favorites,
