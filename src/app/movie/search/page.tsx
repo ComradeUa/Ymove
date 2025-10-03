@@ -1,8 +1,9 @@
 import MoviesSearchResults from '@/components/MovieSearchResults';
+import { Suspense } from 'react';
 export default function SearchPage() {
   return (
-    <main>
+    <Suspense fallback={<p>Loading...</p>}>
       <MoviesSearchResults />
-    </main>
+    </Suspense>
   );
 }
