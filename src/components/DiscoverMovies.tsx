@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 import React, { type FC, useState } from 'react';
 import { Input } from './ui/input';
