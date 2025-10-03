@@ -19,7 +19,7 @@ const FavoritesList: FC = () => {
   if (isError) return <p className="text-center mt-10 text-red-500">Error loading favorites</p>;
   if (!session) return <p className="text-center mt-10">You need to sign in to see favorites!</p>;
   if (!favorites || favorites.length === 0)
-    return <p className="text-center mt-10">You don't have any favorites</p>;
+    return <p className="text-center mt-10">You don&apost have any favorites</p>;
 
   return (
     <div className="mt-10 px-4">
