@@ -17,7 +17,6 @@ const MovieDetailsCard: FC = () => {
 
   return (
     <div className="relative w-full">
-      {/* Фон */}
       {movie.backdrop_path && (
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -29,16 +28,12 @@ const MovieDetailsCard: FC = () => {
       )}
       <div className="absolute inset-0 bg-black/80" />
 
-      {/* Контент */}
       <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10 p-5 sm:p-10 justify-center">
-        {/* Постер */}
         <MoviePoster
           posterPath={movie.poster_path}
           title={movie.title}
           className="w-52 sm:w-64 flex-shrink-0"
         />
-
-        {/* Текст */}
         <MovieInfo
           id={movie.id}
           title={movie.title}
@@ -47,7 +42,6 @@ const MovieDetailsCard: FC = () => {
           runtime={movie.runtime}
           overview={movie.overview}
           voteAverage={movie.vote_average}
-          className="w-full sm:w-[60%]"
         />
       </div>
     </div>
