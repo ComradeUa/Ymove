@@ -2,6 +2,7 @@
 import { useSession, authClient } from '@/lib/auth-client';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React, { type FC } from 'react';
 
 const poppins = Poppins({
@@ -21,7 +22,7 @@ const Header: FC = () => {
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
     await authClient.signOut();
-    window.location.href = '/';
+    redirect('/');
   };
   return (
     <header className="bg-gray-900 text-white">
