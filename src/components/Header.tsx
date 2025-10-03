@@ -3,7 +3,7 @@ import { useSession, authClient } from '@/lib/auth-client';
 import { Inter, Poppins } from 'next/font/google';
 import Link from 'next/link';
 import React, { type FC, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 const poppins = Poppins({
   weight: ['400', '700'],
@@ -18,14 +18,12 @@ const inter = Inter({
 });
 
 const Header: FC = () => {
-  const router = useRouter();
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
     await authClient.signOut();
-    router.push('/');
+    redirect('/');
   };
 
   return (
