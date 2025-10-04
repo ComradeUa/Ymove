@@ -7,6 +7,7 @@ import { useDeleteFavoriteMutation } from '@/store/api/favorite';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import MovieSearchCard from './MoviesSearchCard';
 import { useSession } from '@/lib/auth-client';
+import MovieFavoriteListCard from './MovieFavoriteListCard';
 
 type FavoriteItemProps = {
   movie: MediaItem;
@@ -23,9 +24,9 @@ const FavoriteItem: FC<FavoriteItemProps> = ({ movie }) => {
   };
 
   return (
-    <div className="relative w-full">
-      <MovieSearchCard movie={movie} />
-      <div className="absolute top-2 right-2">
+    <div className="relative gap-4 w-full ">
+      <MovieFavoriteListCard movie={movie} />
+      <div className="absolute top-2 right-1">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button variant="ghost" size="icon" onClick={handleRemove}>
